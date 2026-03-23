@@ -608,4 +608,23 @@
     }
 
     function dragEnd() {
-        document.removeEventLi
+        document.removeEventListener('mousemove', dragMove);
+        document.removeEventListener('touchmove', dragMove);
+        document.removeEventListener('mouseup', dragEnd);
+        document.removeEventListener('touchend', dragEnd);
+    }
+
+    chatToggle.addEventListener('mousedown', dragStart);
+    chatToggle.addEventListener('touchstart', dragStart, { passive: false });
+
+
+    // --- Initialization ---
+    document.addEventListener('DOMContentLoaded', () => {
+        initMatch();
+        loadCounter();
+        setInterval(loadCounter, 20000);
+    });
+
+</script>
+</body>
+</html>
